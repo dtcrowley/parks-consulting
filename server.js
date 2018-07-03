@@ -1,28 +1,50 @@
-import express from 'express';
-// import db from './models';
-import bodyParser from 'body-parser';
+// Dependencies
 
-const app = express();
+import express from "express";
+import bodyParser from "body-parser";
+import morgan from "morgan";
+import path from "path";
+// Sets up the Express app
 const PORT = process.env.PORT || 8080;
+const app = express();
 
-app.use(express.static('public'));
-
-app.use(bodyParser.urlencoded({ extended: true }));
-
+// Sets up express app to handle data parsing
+app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
-import exphbs from 'express-handlebars';
+// Sets up Handlebars
+
+import exphbs from "express-handlebars";
+
+app.set('views', path.join(__dirname, 'public', 'views'));
 
 app.engine('handlebars', exphbs({
-    defaultLayout: 'views/layout/main',
-    partialsDir: __dirname + '/views/partials'
-}));
+    defaultLayout: 'main',
+    layoutsDir: path.join(__dirname, 'public', 'views', 'layouts')}
+    // partialsDir: path.join(__dirname, '..', 'views', 'partials')}
+));
+// app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-import pages from './controllers/htmlController.js';
-// import vendors from './controllers/vendorController.js';
+// Sets up the static directory
+app.use(express.static('public'));
 
-app.use(pages);
-// app.use(vendors);
+// Import router
+import htmlRoutes from "./controllers/htmlController.js";
 
-app.listen(PORT, () => console.log('App now listening at localhost: ', PORT));
+app.use(htmlRoutes);
+
+// app.use(function(req, res, next){
+//     res.status(404);
+
+//     res.render('404');
+//     return;
+// });
+
+// app.get('/', function(req, res){
+//     res.render("index");
+// });
+
+app.listen(PORT, function() {
+    console.log('Server listening on: http://localhost:' + PORT)
+});
