@@ -15,19 +15,38 @@
 </head>
 <body>
     <nav>
-    <div class="nav-wrapper">
-        <div>
-            <ul class="left">
-                <li><a href="/aboutus"><h5>About Us</h5></a></li>
-                <li><a href="/services"><h5>Services</h5></a></li>
-                <li><a href="/contactus"><h5>Contact Us</h5></a></li>
-            </ul>
+        <div class="nav-wrapper">
+            <div>
+                <ul class="right">
+                    <li><a href="/aboutus"><h5>About Us</h5></a></li>
+                    <li><a href="/services"><h5>Services</h5></a></li>
+                    <li><a href="/contactus"><h5>Contact Us</h5></a></li>
+                </ul>
+            </div>
+            <a href="/" class="brand-logo center"><h3>Parks Consulting</h3></a>
         </div>
-        <a href="/" class="brand-logo center"><h3>Parks Consulting</h3></a>
-    </div>
-  </nav>
+    </nav>
 
     {{{body}}}
 
+    <footer class="page-footer">
+        {{!-- <div class="container"> --}}
+            <div class="row">
+                <div class="col l6 s12 footer-text">
+                    <h5>© 2018 Parks Consulting</h5>                
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <ul>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!">Home</a>  |   
+                            <a class="grey-text text-lighten-3" href="#!">About Us</a>  |   
+                            <a class="grey-text text-lighten-3" href="#!">Services</a>  |   
+                            <a class="grey-text text-lighten-3" href="#!">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {{!-- </div> --}}
+    </footer>
 </body>
 </html>
